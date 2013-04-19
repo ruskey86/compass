@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<title>&nbsp;</title>
+	<head>
+		<style>
+			#compass {
+
+				color: #C0C;
+				position: absolute;
+				left: 50px;
+				top: 40px;
+			}
+			#needle
+			{
+				
+				position:absolute;
+				left: 148px;
+				top: 50px;
+				
+			}
+		</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script src="jqRotate/jqRotate.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
+
+	</head>
+	<body>
+		<img src="images/needle.png" alt="Lady Bug" id="needle" >
+		<img src="images/compass.png" alt="compass" id="compass" >
+	</body>
+</html>
+<script>
+	var watchID = null;
+
+	// Wait for Cordova to load
+	//
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+	// Cordova is ready
+	//
+	function onDeviceReady() {
+		startWatch();
+	}
+
+	// Start watching the compass
+	//
+	function startWatch() {
+
+		// Update compass every 3 seconds
+		var options = {
+			frequency : 50
+		};
+
+		watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+	}
+
+	// Stop watching the compass
+	//
+	function stopWatch() {
+		if (watchID) {
+			navigator.compass.clearWatch(watchID);
+			watchID = null;
+		}
+	}
+
+	// onSuccess: Get the current heading
+	//
+	function onSuccess(heading) {
+		var element = document.getElementById('heading');
+		
+		$("#needle").rotate(heading.magneticHeading);
+	}
+
+	// onError: Failed to get the heading
+	//
+	function onError(compassError) {
+		alert('Compass error: ' + compassError.code);
+	}
+
+</script>
