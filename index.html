@@ -73,7 +73,7 @@
 	function onSuccess(heading) {
 		var element = document.getElementById('heading');
 		
-		$("#needle").rotate(heading.magneticHeading);
+		$("#needle").rotate(-heading.magneticHeading);
 	}
 
 	// onError: Failed to get the heading
