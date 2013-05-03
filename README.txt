@@ -1,0 +1,1 @@
+All code presented here is released with the MIT license. All code other than that of or relating to Phonegap, Jquery or Jquery mobile is mine. Please enjoy this code. For more info go to http://hardcorecoding.blogspot.com/
