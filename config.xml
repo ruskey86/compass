@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+
+xmlns:gap   = "http://phonegap.com/ns/1.0"
+id          = "com.natescode.compass"
+version     = "1.0.0"
+versionCode = "10" >
+
+	<!-- versionCode is optional and Android only -->
+
+	<preference name="phonegap-version" value="3.1.0" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.deviceorientation.CompassListener">
+	<name>Compass</name>
+	<description>Basic Compass app</description>
+	<author href="http://natescode.com" email="nate@natescode.com">Nathan Hedglin</author>
+
+</widget>
