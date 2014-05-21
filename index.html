@@ -22,16 +22,12 @@
 		</style>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-		<script src="jqRotate/jqRotate.js"></script>
 	</head>
 	<body>
-		<img src="compass.png" id="compass">
-		<img src="needle.png" id="needle">
+		<!--<img src="compass.png" id="compass">-->
+		<img src="compassneedle.png" id="needle">
 	</body>
 	<script>
 	document.addEventListener("deviceready", onDeviceReady, false); //creates a listener that waits for the deviceready event and then fires onDevice ready function
@@ -51,7 +47,11 @@
 
 	function onSuccess(heading) {//device s magnetic heading is passed to heading variable
 
-		$("#needle").rotate(-heading.magneticHeading); //jquery function that gets the #needle id and rotates it minus the current heading
+		var needle = document.getElementById("needle");
+		var transform = "rotate(-" + heading.magneticHeading + "deg)";
+		needle.style.webkitTransform = transform;
+		
+		//$("#needle").rotate(-heading.magneticHeading); //jquery function that gets the #needle id and rotates it minus the current heading
 	}
 
 	function onError(compassError) { //if there is an error the error will be passed to onError in the compassError variable
