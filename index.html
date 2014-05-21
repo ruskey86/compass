@@ -1,62 +1,12 @@
 <!DOCTYPE html>
 <html>
-<!--This is a phonegap compass app exampa -->
-	<title>&nbsp;</title>
 	<head>
-		<style>
-			#compass {
-
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				z-index: 1;
-			}
-			#needle {
-
-				position: absolute;
-				top: 8px;
-				left: 98px;
-				z-index: 10;
-			}
-
-		</style>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<title>Compass Example</title>
+		<link href="style.css">
 	</head>
 	<body>
-		<!--<img src="compass.png" id="compass">-->
 		<img src="compassneedle.png" id="needle">
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="compass.js"></script>
 	</body>
-	<script>
-	document.addEventListener("deviceready", onDeviceReady, false); //creates a listener that waits for the deviceready event and then fires onDevice ready function
-
-	function onDeviceReady() { 
-		startCompass(); //runs the startCompass function
-	}
-
-	function startCompass() {
-
-		var options = {
-			frequency : 50 //sets the compass heading to be updated every 50 milliseconds
-		};
-
-		navigator.compass.watchHeading(onSuccess, onError, options); //gets the compass heading from device and passes heading to onSuccess function
-	}
-
-	function onSuccess(heading) {//device s magnetic heading is passed to heading variable
-
-		var needle = document.getElementById("needle");
-		var transform = "rotate(-" + heading.magneticHeading + "deg)";
-		needle.style.webkitTransform = transform;
-		
-		//$("#needle").rotate(-heading.magneticHeading); //jquery function that gets the #needle id and rotates it minus the current heading
-	}
-
-	function onError(compassError) { //if there is an error the error will be passed to onError in the compassError variable
-		alert('Compass error: ' + compassError.code); //displays an alert with the error code
-	}
-</script>
-
 </html>
