@@ -8,11 +8,9 @@ versionCode = "10" >
 
 	<!-- versionCode is optional and Android only -->
 
-	<preference name="phonegap-version" value="3.1.0" />
+	<preference name="phonegap-version" value="3.3.0" />
+	<gap:plugin name="org.apache.cordova.device-orientation" />
 	<name>Compass</name>
 	<description>Basic Compass app</description>
 	<author href="http://natescode.com" email="nate@natescode.com">Nathan Hedglin</author>
-	<feature name="Compass">
-		<param name="android-package" value="org.apache.cordova.CompassListener" />
-	</feature>
 </widget>
